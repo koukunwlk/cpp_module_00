@@ -1,56 +1,31 @@
-# ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-# include<iostream>
-# include "Contact.hpp"
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
+#include <iostream>
+#include <string>
+#include "Contact.hpp"
 
-class PhoneBook {
+class PhoneBook
+{
 private:
 	Contact contacts[8];
 	int contactCount;
+
 public:
-	PhoneBook(){}
-	PhoneBook() {
+	PhoneBook(){
 		this->contactCount = 0;
 	}
 
-	~PhoneBook();
+	~PhoneBook(){};
 
-	void addNewContact(Contact contact) {
-		if(contactCount < 8) {
-			this->contacts[this->contactCount] = contact;
-			return ;
-		}
-		std::cout << 'PhoneBook is Already full' << '\n';
-	}
+	void addNewContact(Contact& contact);
 
-	std::string parseInfo(std::string info) {
-		std::string parsedInfo;
+	std::string parseInfo(std::string info);
 
-		parsedInfo = info.substr(0, 10);
-	}
+	void showContacts();
+	void showContact(int index);
+	void printInfo(std::string info);
 
-	void showContacts() {
-		Contact currenctContact;
-		std::cout << "index\t|\tfirst name\t|\tlast name\t|\tnickname" << '\n';
-		for(int index = 0; index < this->contactCount; index++) {
-			currenctContact = this->contacts[index];
-			std::cout << "[ " << index << " ]";
-			std::cout << this->parseInfo(currenctContact.getFirstName());
-			std::cout << this->parseInfo(currenctContact.getLastName());
-			std::cout << this->parseInfo(currenctContact.getNickname());
-		}
-	};
-	void showContact(int index) {
+	void searchContacts();
+};
 
-	};
-
-	void searchContacts(int index) {
-		if(index < 1 || index > 8) {
-			std::cout << 'Invalid index' << '\n';
-			return ;
-		}
-		this->showContacts();
-		this->showContact(index);
-	}
-}
-# endif
+#endif

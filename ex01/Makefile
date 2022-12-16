@@ -1,4 +1,4 @@
-NAME = megaphone
+NAME = incaBook
 
 HEADERS_PATH = ./includes/
 SRCS_PATH = ./src/
@@ -10,7 +10,7 @@ CFLAGS =  -std=c++98 -Wall -Wextra -Werror -g -I $(HEADERS_PATH)
 RM = rm -f
 MKDIR = mkdir -p
 
-SRC_FILES = megaphone.cpp main.cpp
+SRC_FILES = main.cpp PhoneBook.cpp Contact.cpp
 
 SOURCES = $(addprefix $(SRCS_PATH), $(SRC_FILES))
 OBJ_FILES = $(patsubst %.cpp, %.o, $(SRC_FILES))
