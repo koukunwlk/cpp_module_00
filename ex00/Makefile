@@ -5,9 +5,9 @@ SRCS_PATH = ./src/
 OBJS_PATH = ./objs/
 
 CC = clang++
-CFLAGS =  -std=c++98 -Wall -Wextra -Werror -I $(HEADERS_PATH) 
+CFLAGS =  -std=c++98 -Wall -Wextra -Werror -g -I $(HEADERS_PATH) 
 
-RM = rm -f
+RM = rm -rf
 MKDIR = mkdir -p
 
 SRC_FILES = megaphone.cpp main.cpp
@@ -26,7 +26,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@$(RM) $(OBJECTS)
+	@$(RM) $(OBJS_PATH)
 
 fclean: clean
 	@$(RM) $(NAME)

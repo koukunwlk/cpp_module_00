@@ -7,7 +7,7 @@ OBJS_PATH = ./objs/
 CC = clang++
 CFLAGS =  -std=c++98 -Wall -Wextra -Werror -g -I $(HEADERS_PATH) 
 
-RM = rm -f
+RM = rm -rf
 MKDIR = mkdir -p
 
 SRC_FILES = main.cpp PhoneBook.cpp Contact.cpp
@@ -26,7 +26,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@$(RM) $(OBJECTS)
+	@$(RM) $(OBJS_PATH)
 
 fclean: clean
 	@$(RM) $(NAME)

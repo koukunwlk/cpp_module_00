@@ -33,7 +33,7 @@ Contact createNewContact() {
 	return Contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
 }
 
-void dramaticPause(int clear) {
+void dramaticPause(bool clear) {
 	system("sleep 2");
 	if(clear) {
 		system("clear");
@@ -48,7 +48,7 @@ int main(void) {
 	system("clear");
 	std::cout << "\33[0;95mWelcome to IncaBook this is the future of century XII\033[0m" << std::endl;
 	std::cout << "\33[4;92mType in UPPERCASE one of followings options\033[0m" << std::endl;
-	dramaticPause(0);
+	dramaticPause(false);
 	while(choice.compare("EXIT")) {
 		showOptions();
 		std::cin >> choice;
@@ -56,7 +56,7 @@ int main(void) {
 		if(!choice.compare("ADD")) {
 			newContact = createNewContact();
 			incaBook.addNewContact(newContact);
-			dramaticPause(1);
+			dramaticPause(true);
 			continue ;
 		}
 
@@ -68,7 +68,6 @@ int main(void) {
 		if(choice.compare("EXIT")) {
 			std::cout << "\33[0;31m \nINVALID OPTION FOOL TRY TYPING IN UPPERCASE\033[0m" << std::endl;
 		}
-		std::cin.clear();
 	}
 	std::cout << "\33[0;95mBYE!! <3\033[0m" << std::endl;
 	return (0);
