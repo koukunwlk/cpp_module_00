@@ -21,7 +21,7 @@ public:
 
 	std::string parseInfo(std::string info);
 
-	void showContacts();
+	int showContacts();
 	void showContact(int index);
 	void printInfo(std::string info);
 

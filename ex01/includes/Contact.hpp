@@ -34,6 +34,7 @@ public:
 	void setPhoneNumber(std::string phoneNumber);
 
 	void setDarkestSecret(std::string darkestSecret);
+	bool isValidPhoneNumber(std::string phoneNumber);
 
 	std::string getFirstName();
 

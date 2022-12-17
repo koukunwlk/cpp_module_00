@@ -38,16 +38,28 @@ void Contact::setNickname(std::string nickname)
 	}
 }
 
+bool Contact::isValidPhoneNumber(std::string phoneNumber) {
+	for(size_t index = 0; index < phoneNumber.length(); index++) {
+		if(std::isdigit(phoneNumber[index])) {
+			continue ;
+		}
+		return false;
+	}
+	return true;
+}
+
 void Contact::setPhoneNumber(std::string phoneNumber)
 {
-	if (phoneNumber.empty())
+	std::string retryPhoneNumber;
+	if (phoneNumber.empty() || !this->isValidPhoneNumber(phoneNumber))
 	{
 		std::cout << "Phone number cannot be empty" << std::endl;
+		std::cout << "Please enter a valid phone number: " << std::endl;
+		std::cin >> retryPhoneNumber;
+		this->setPhoneNumber(retryPhoneNumber);
+		return ;
 	}
-	else
-	{
-		this->phoneNumber = phoneNumber;
-	}
+	this->phoneNumber = phoneNumber;
 }
 
 void Contact::setDarkestSecret(std::string darkestSecret)

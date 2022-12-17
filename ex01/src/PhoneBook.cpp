@@ -6,9 +6,10 @@ void PhoneBook::addNewContact(Contact& contact)
 	{
 		this->contacts[this->contactCount] = contact;
 		contactCount++ ;
-		return;
+		std::cout << "\33[1;32mNEW CONTACT ADDED TO YOUR INCABOOK\033[0m" << std::endl;
+		return ;
 	}
-	std::cout << "PhoneBook is Already full" << std::endl;
+	std::cout << "\33[1;31mINCABOOK ALREADY FULL\033[0m" << std::endl;
 }
 
 std::string PhoneBook::parseInfo(std::string info)
@@ -21,29 +22,31 @@ std::string PhoneBook::parseInfo(std::string info)
 
 void PhoneBook::printInfo(std::string info) {
 	std::cout << info << "\t";
-	if(info.size() < 10) {
+	if(info.size() < 6) {
 		std::cout << "\t";
 	}
-	std::cout << "| ";
+	std::cout << "| " ;
 }
 
-void PhoneBook::showContacts()
+int PhoneBook::showContacts()
 {
 	Contact currenctContact;
 	if (this->contactCount == 0)
 	{
-		std::cout << "Empty list";
-		return ;
+		std::cout << "\33[1;31mEmpty list\033[0m" << std::endl;
+		return false;
 	}
 	std::cout << "index\t| first name\t| last name\t| nickname\t|" << std::endl;
 	for (int index = 0; index < this->contactCount; index++)
 	{
 		currenctContact = this->contacts[index];
-		std::cout << "[ " << index << " ]\t| ";
+		std::cout << "[ " << index + 1 << " ]\t| ";
 		printInfo(this->parseInfo(currenctContact.getFirstName()));
 		printInfo(this->parseInfo(currenctContact.getLastName()));
 		printInfo(this->parseInfo(currenctContact.getNickname()));
+		std::cout << std::endl;
 	}
+	return true;
 };
 void PhoneBook::showContact(int index)
 {
@@ -63,7 +66,9 @@ void PhoneBook::showContact(int index)
 void PhoneBook::searchContacts()
 {
 	int index; 
-	this->showContacts();
+	if(!this->showContacts()) {
+		return ;
+	}
 	std::cout << "Select a contact by index: ";
 	std::cin >> index;
 	if (index < 1 || index > 8)
@@ -71,5 +76,6 @@ void PhoneBook::searchContacts()
 		std::cout << "Invalid index" << std::endl;
 		return;
 	}
+	index--;
 	this->showContact(index);
 }
