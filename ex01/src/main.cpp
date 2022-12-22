@@ -40,6 +40,20 @@ void dramaticPause(bool clear) {
 	}
 }
 
+bool hasSpecialCharacter(std::string str) {
+	const std::string special_chars = "!@#$%^&*()_+-=[]{}|\\:;\"'<>,.?/~`";
+	return str.find_first_of(special_chars) != std::string::npos;
+}
+
+bool hasSpaceCharacter(std::string str) {
+	return str.find_first_of(" ") != std::string::npos;
+}
+
+
+bool isValidChoice(std::string choice) {
+	return !(hasSpecialCharacter(choice) || hasSpaceCharacter(choice));
+}
+
 int main(void) {
 	std::string choice = "";
 	PhoneBook incaBook = PhoneBook();
@@ -49,9 +63,15 @@ int main(void) {
 	std::cout << "\33[0;95mWelcome to IncaBook this is the future of century XII\033[0m" << std::endl;
 	std::cout << "\33[4;92mType in UPPERCASE one of followings options\033[0m" << std::endl;
 	dramaticPause(false);
+
 	while(choice.compare("EXIT")) {
 		showOptions();
-		std::cin >> choice;
+		std::getline(std::cin, choice);
+
+		if(!isValidChoice(choice)) {
+			std::cout << "\33[0;31m \nINVALID CHARACTER INSERTED\033[0m" << std::endl;
+			continue ;
+		}
 
 		if(!choice.compare("ADD")) {
 			newContact = createNewContact();

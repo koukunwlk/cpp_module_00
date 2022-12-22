@@ -1,5 +1,11 @@
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook() {
+	this->contactCount = 0;
+}
+
+PhoneBook::~PhoneBook() {}
+
 void PhoneBook::addNewContact(Contact& contact)
 {
 	if (contactCount < 8)
@@ -12,13 +18,6 @@ void PhoneBook::addNewContact(Contact& contact)
 	std::cout << "\33[1;31mINCABOOK ALREADY FULL\033[0m" << std::endl;
 }
 
-std::string PhoneBook::parseInfo(std::string info)
-{
-	std::string parsedInfo;
-
-	parsedInfo = info.substr(0, 10);
-	return parsedInfo;
-}
 
 void PhoneBook::printInfo(std::string info) {
 	std::cout << info << "\t";
@@ -41,10 +40,9 @@ int PhoneBook::showContacts()
 	{
 		currenctContact = this->contacts[index];
 		std::cout << "[ " << index + 1 << " ]\t| ";
-		printInfo(this->parseInfo(currenctContact.getFirstName()));
-		printInfo(this->parseInfo(currenctContact.getLastName()));
-		printInfo(this->parseInfo(currenctContact.getNickname()));
-		std::cout << std::endl;
+		std::cout << std::setw(10) << std::right << currenctContact.getFirstName() << std::endl;
+		std::cout << std::setw(10) << std::right << currenctContact.getLastName() << std::endl;
+		std::cout << std::setw(10) << std::right << currenctContact.getNickname() << std::endl;
 	}
 	return true;
 };
