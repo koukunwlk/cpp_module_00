@@ -14,16 +14,7 @@ private:
 
 public:
 	void speak();
-	Megaphone(char* message)
-	{
-		if(!message) {
-			this->message = "";
-		}
-		else {
-			this->message = message;
-		}
-		this->errorMessage = "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	}
+	Megaphone(char* message);
 };
 
 #endif
