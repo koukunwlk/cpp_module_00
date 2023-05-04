@@ -2,14 +2,15 @@
 #define PHONEBOOK_HPP
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 #include "Contact.hpp"
-
 
 class PhoneBook
 {
 private:
 	Contact contacts[8];
 	int contactCount;
+	int currentContactIndex;
 
 	int showContacts();
 	void showContact(int index);

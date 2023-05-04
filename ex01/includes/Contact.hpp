@@ -1,7 +1,9 @@
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 #include <iostream>
-#include <string>
+#include <iomanip>
+#include <stdlib.h>
+
 class Contact
 {
 private:
@@ -12,16 +14,9 @@ private:
 	std::string darkestSecret;
 
 public:
-	Contact() {}
+	Contact();
 
-	Contact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret)
-	{
-		setFirstName(firstName);
-		setLastName(lastName);
-		setNickname(nickname);
-		setPhoneNumber(phoneNumber);
-		setDarkestSecret(darkestSecret);
-	}
+	Contact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret);
 
 	~Contact();
 

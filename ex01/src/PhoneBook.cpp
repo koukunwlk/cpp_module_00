@@ -7,11 +7,14 @@ PhoneBook::PhoneBook() {
 PhoneBook::~PhoneBook() {}
 
 void PhoneBook::addNewContact(Contact& contact) {
-	if (contactCount == 8) {
-		contactCount = 0;
+	if(currentContactIndex == 8) {
+		currentContactIndex = 0;
 	}
-	this->contacts[this->contactCount] = contact;
-	contactCount++;
+	
+	this->contacts[currentContactIndex++] = contact;
+	if(contactCount != 8) {
+		contactCount++;
+	} 
 	std::cout << "\33[1;32mNEW CONTACT ADDED TO YOUR INCABOOK\033[0m" << std::endl;
 	return;
 }
@@ -59,11 +62,13 @@ void PhoneBook::showContact(int index) {
 
 void PhoneBook::searchContacts() {
 	int index;
+	std::string choice;
 	if (!this->showContacts()) {
 		return;
 	}
 	std::cout << "Select a contact by index: ";
-	std::cin >> index;
+	std::getline(std::cin, choice);
+	index = std::atoi(choice.c_str());
 	if (index < 1 || index > 8)
 	{
 		std::cout << "Invalid index" << std::endl;

@@ -1,6 +1,6 @@
-#include <iostream>
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include <iostream>
 #include <stdlib.h>
 
 
@@ -20,15 +20,15 @@ Contact createNewContact() {
 
 	std::cout << "\nEnter infos of contact below" << std::endl;
 	std::cout << "First name" << std::endl;
-	std::cin >> firstName;
+	std::getline(std::cin, firstName);
 	std::cout << "Last name" << std::endl;
-	std::cin >> lastName;
+	std::getline(std::cin, lastName);
 	std::cout << "Nickname" << std::endl;
-	std::cin >> nickName;
+	std::getline(std::cin, nickName);
 	std::cout << "Phone number(only numbers)" << std::endl;
-	std::cin >> phoneNumber;
+	std::getline(std::cin, phoneNumber);
 	std::cout << "Darkest secret" << std::endl;
-	std::cin >> darkestSecret;
+	std::getline(std::cin, darkestSecret);
 
 	return Contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
 }

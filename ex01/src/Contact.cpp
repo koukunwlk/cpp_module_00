@@ -1,5 +1,16 @@
 #include "Contact.hpp"
 
+Contact::Contact(){}
+
+Contact::Contact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret)
+{
+	setFirstName(firstName);
+	setLastName(lastName);
+	setNickname(nickname);
+	setPhoneNumber(phoneNumber);
+	setDarkestSecret(darkestSecret);
+}
+
 Contact::~Contact() {}
 
 void Contact::setFirstName(std::string firstName)
@@ -9,7 +20,7 @@ void Contact::setFirstName(std::string firstName)
 	{
 		std::cout << "First name cannot be empty" << std::endl;
 		std::cout << "Please insert a first name: ";
-		std::cin >> retryFirstName;
+		std::getline(std::cin, retryFirstName);
 		this->setLastName(retryFirstName);
 
 	}
@@ -23,7 +34,7 @@ void Contact::setLastName(std::string lastName)
 	{
 		std::cout << "Last name cannot be empty" << std::endl;
 		std::cout << "Please insert a last name: ";
-		std::cin >> retryLastName;
+		std::getline(std::cin, retryLastName);
 		this->setLastName(retryLastName);
 		
 	}
@@ -37,7 +48,8 @@ void Contact::setNickname(std::string nickname)
 	{
 		std::cout << "Nickname cannot be empty" << std::endl;
 		std::cout << "Please insert a nickname: ";
-		std::cin >> retryNickname;
+		std::getline(std::cin, retryNickname);
+
 		this->setLastName(retryNickname);
 	}
 	this->nickname = nickname;
@@ -60,7 +72,8 @@ void Contact::setPhoneNumber(std::string phoneNumber)
 	{
 		std::cout << "Phone number cannot be empty" << std::endl;
 		std::cout << "Please enter a valid phone number: " << std::endl;
-		std::cin >> retryPhoneNumber;
+		std::getline(std::cin, retryPhoneNumber);
+
 		this->setPhoneNumber(retryPhoneNumber);
 		return ;
 	}
@@ -76,7 +89,7 @@ void Contact::setDarkestSecret(std::string darkestSecret)
 	{
 		std::cout << "Darkest secret cannot be empty" << std::endl;
 		std::cout << "Please insert a Darkest secret: ";
-		std::cin >> retryDarkestSecret;
+		std::getline(std::cin, retryDarkestSecret);
 		this->setLastName(retryDarkestSecret);
 	}
 	this->darkestSecret = darkestSecret;
