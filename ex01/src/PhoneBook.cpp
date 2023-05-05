@@ -2,6 +2,7 @@
 
 PhoneBook::PhoneBook() {
 	this->contactCount = 0;
+	currentContactIndex = 0;
 }
 
 PhoneBook::~PhoneBook() {}
@@ -21,11 +22,14 @@ void PhoneBook::addNewContact(Contact& contact) {
 
 
 void PhoneBook::printInfo(std::string info) {
-	std::cout << info << "\t";
-	if (info.size() < 6) {
-		std::cout << "\t";
-	}
-	std::cout << "| ";
+	if (info.length() <= 10)
+        std::cout << std::left << std::setw(10) << info;
+    else
+    {
+        info =  info.substr(0,9) + ".";
+        std::cout << std::left << std::setw(10) << info;
+    }
+	std::cout << "\t| ";
 }
 
 int PhoneBook::showContacts() {
@@ -40,9 +44,10 @@ int PhoneBook::showContacts() {
 	{
 		currentContact = this->contacts[index];
 		std::cout << "[ " << index + 1 << " ]\t| ";
-		std::cout << std::setw(10) << std::right << currentContact.getFirstName() << std::endl;
-		std::cout << std::setw(10) << std::right << currentContact.getLastName() << std::endl;
-		std::cout << std::setw(10) << std::right << currentContact.getNickname() << std::endl;
+		 printInfo(currentContact.getFirstName());
+		 printInfo(currentContact.getLastName());
+		 printInfo(currentContact.getNickname());
+		 std::cout << std::endl;
 	}
 	return true;
 };
